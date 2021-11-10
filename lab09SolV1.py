@@ -1,5 +1,8 @@
 import csv
 from datetime import datetime
+from prettytable import PrettyTable
+#pip install prettytable
+#on a mac: sudo pip3 intall PTable
 
 #asks the user to enter a filename. If the given name does not exist as a file, the user should be asked again until a valid filename is given.
 def input_filename(init_list):
@@ -61,11 +64,17 @@ def index_max_profit(init_list):
 
 #given a list representing a row of data, prints the information to the console showing column labels followed by the value.
 def pretty_print_movie_info(init_list):
-    print("Date\t\t Name")
+    #print("Date\t\t Name")
 
-    for line in range(len(init_list)):
-        print(str(init_list[line][0]),"\t", init_list[line][1], "\t||Cost = $", round(init_list[line][2], 2), "\tGross = $", round(init_list[line][3], 2),
-              "\tProfit = $", round(init_list[line][4], 2))
+    #for line in range(len(init_list)):
+        #print(str(init_list[line][0]),"\t", init_list[line][1], "\t||Cost = $", round(init_list[line][2], 2), "\tGross = $", round(init_list[line][3], 2),
+              #"\tProfit = $", round(init_list[line][4], 2))
+    table = PrettyTable(["Date", "Title", "Cost", "Gross", "Profit"])
+    for row in range(len(init_list)):
+        table.add_row(init_list[row])
+
+    print(table)
+
 
 #given a movie dataset as a list of lists and a filename, saves the dataset to a comma-separated values file of the given name.
 def save_movie_data(init_list):
